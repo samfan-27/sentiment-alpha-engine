@@ -1,0 +1,15 @@
+pandas
+numpy
+yfinance
+requests
+python-dotenv
+supabase
+psycopg2-binary
+streamlit
+plotly
+transformers
+huggingface-hub
+tenacity
+loguru
+vectorbt
+backtrader
