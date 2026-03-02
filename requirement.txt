@@ -13,3 +13,4 @@ tenacity
 loguru
 vectorbt
 backtrader
+groq
