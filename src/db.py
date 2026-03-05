@@ -22,8 +22,13 @@ def insert_trade(trade_record: dict):
         logger.info(f'Inserted new trade for {trade_record.get('ticker')}.')
         return response.data
     except Exception as e:
-        logger.error(f'Failed to insert trade record: {e}')
-        raise
+        error_details = str(e)
+        if '23505' in error_details or 'unique_trade_per_day' in error_details:
+            logger.warning(f'Trade for {trade_record.get('ticker')} already exists for today. Skipping duplicate insertion.')
+            return None
+        else:
+            logger.error(f"Failed to insert trade record: {e}")
+            raise
     
 def update_trade_exit(trade_id: str, exit_data: dict):
     try:
